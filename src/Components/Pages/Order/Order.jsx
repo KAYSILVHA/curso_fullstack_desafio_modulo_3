@@ -1,12 +1,12 @@
 import React from 'react';
 import "./assets/style/style.scss"
 
-const Salty = () => {
+const Order = () => {
     return (
         <>
-            Salgados
+            Pedidos
         </>
     )
 };
 
-export default Salty;
+export default Order;
