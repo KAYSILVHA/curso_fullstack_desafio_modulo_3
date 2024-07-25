@@ -3,9 +3,9 @@ import "./assets/style/style.scss"
 
 const Breackfast = () => {
     return (
-        <>
-            Café da manhã
-        </>
+        <div className='content'>
+            <div className="container-fluid div-container">Café da manhã</div>
+        </div>
     )
 };
 

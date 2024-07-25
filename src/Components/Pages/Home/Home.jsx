@@ -1,12 +1,13 @@
 import React from 'react';
 import "./assets/style/style.scss"
 
-const Salty = () => {
+const Home = () => {
     return (
         <div className='content'>
-            <div className="container-fluid div-container">Salgados</div>
+            <div className="container-fluid div-container">Home</div>
+
         </div>
     )
 };
 
-export default Salty;
+export default Home;

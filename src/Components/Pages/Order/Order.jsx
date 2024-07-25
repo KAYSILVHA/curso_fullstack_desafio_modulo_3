@@ -3,9 +3,9 @@ import "./assets/style/style.scss"
 
 const Order = () => {
     return (
-        <>
-            Pedidos
-        </>
+        <div className='content'>
+            <div className="container-fluid div-container">Pedidos</div>
+        </div>
     )
 };
 

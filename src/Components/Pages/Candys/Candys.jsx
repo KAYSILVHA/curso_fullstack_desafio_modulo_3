@@ -3,9 +3,9 @@ import "./assets/style/style.scss"
 
 const Candys = () => {
     return (
-        <>
-            Doces
-        </>
+        <div className='content'>
+            <div className="container-fluid div-container">Doces</div>
+        </div>
     )
 };
 

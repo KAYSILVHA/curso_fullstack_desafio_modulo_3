@@ -5,12 +5,12 @@ import "./assets/style/style.scss"
 
 function Layout() {
   return (
-    <>
+    <div className='layout'>
       <Sidebar />
       <div>
         <Outlet />
       </div>
-    </>
+    </div>
   );
 }
 
