@@ -1,32 +1,73 @@
 .content {
     margin-left: 190px;
     padding: 30px 20px;
-    background-color: #F5F5F5
-}
-
-.div-container {
-    padding: 0 90px;
-    color: #FF8E6D;
-}
-
-.container {
-    width: 80%;
-    overflow: hidden;
-}
-
-.card-slider {
-    display: flex;
-    transition: transform 0.3s ease;
-    cursor: grab;
-}
-
-.card {
-    min-width: 20%;
-    margin: 10px;
+    height: auto;
     background-color: #fff;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    font-size: 1.2em;
-    user-select: none;
+
+    .div-container {
+        padding: 0 90px;
+        color: #FF8E6D;
+
+        .container-card {
+            margin: 3rem 0;
+
+            .cards {
+                gap: 20px;
+
+                .card {
+                    margin-top: 1rem;
+                    flex: 1;
+                    background-color: #fff;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    font-size: 1.2em;
+                    user-select: none;
+                }
+            }
+        }
+
+        .container-bests {
+            margin: 3rem 0;
+
+            h5 {
+                margin-bottom: 1.5rem;
+            }
+
+            .bests {
+                gap: 20px;
+
+                .card {
+                    background-color: #fff;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    font-size: 1.2em;
+                    height: 200px;
+                }
+            }
+        }
+
+        .container-feedbacks {
+            margin: 3rem 0;
+
+            h5 {
+                margin-bottom: 1.5rem;
+            }
+
+            .feedbacks {
+                gap: 20px;
+
+                .card {
+                    background-color: #fff;
+                    padding: 20px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    text-align: center;
+                    font-size: 1.2em;
+                    flex-grow: 1;
+                    height: 200px;
+                }
+            }
+        }
+    }
 }
