@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import "./assets/style/style.scss";
 import { Nav, NavItem } from "reactstrap";
 
+import 'font-awesome/css/font-awesome.min.css';
+
 const Sidebar = () => {
     const location = useLocation();
     const [selected, setSelected] = useState(location.pathname || "/home");
@@ -24,7 +26,8 @@ const Sidebar = () => {
                         to="/home"
                         onClick={() => handleItemClick("/home")}
                     >
-                        Menu Principal
+                        <i className="fa fa-home mr-2"></i>
+                        Menu
                     </Link>
                 </NavItem>
                 <NavItem className="nav-item">
@@ -33,6 +36,7 @@ const Sidebar = () => {
                         to="/order"
                         onClick={() => handleItemClick("/order")}
                     >
+                        <i className="fa fa-shopping-cart mr-2"></i>
                         Pedidos
                     </Link>
                 </NavItem>
@@ -42,6 +46,7 @@ const Sidebar = () => {
                         to="/coffee"
                         onClick={() => handleItemClick("/coffee")}
                     >
+                        <i className="fa fa-coffee mr-2"></i>
                         Café
                     </Link>
                 </NavItem>
@@ -51,6 +56,7 @@ const Sidebar = () => {
                         to="/juices"
                         onClick={() => handleItemClick("/juices")}
                     >
+                        <i className="fa fa-glass mr-2"></i>
                         Refrescos
                     </Link>
                 </NavItem>
@@ -60,6 +66,7 @@ const Sidebar = () => {
                         to="/candys"
                         onClick={() => handleItemClick("/candys")}
                     >
+                        <i className="fa fa-candy-cane mr-2"></i>
                         Doces
                     </Link>
                 </NavItem>
@@ -69,6 +76,7 @@ const Sidebar = () => {
                         to="/salty"
                         onClick={() => handleItemClick("/salty")}
                     >
+                        <i className="fa fa-bacon mr-2"></i>
                         Salgados
                     </Link>
                 </NavItem>
@@ -78,6 +86,7 @@ const Sidebar = () => {
                         to="/breackfast"
                         onClick={() => handleItemClick("/breackfast")}
                     >
+                        <i className="fa fa-bread-slice mr-2"></i>
                         Café da Manhã
                     </Link>
                 </NavItem>
@@ -87,6 +96,7 @@ const Sidebar = () => {
                         to="/lunch"
                         onClick={() => handleItemClick("/lunch")}
                     >
+                        <i className="fa-solid fa-utensils mr-2"></i>
                         Almoço
                     </Link>
                 </NavItem>
@@ -96,6 +106,7 @@ const Sidebar = () => {
                         to="/dinner"
                         onClick={() => handleItemClick("/dinner")}
                     >
+                        <i className="fa fa-drumstick-bite mr-2"></i>
                         Jantar
                     </Link>
                 </NavItem>
