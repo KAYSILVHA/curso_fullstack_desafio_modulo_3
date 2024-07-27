@@ -3,6 +3,10 @@
     padding: 30px 20px;
     background-color: #F5F5F550;
     height: auto;
+        
+    @media screen and (max-width: 991px){
+        margin: 0;
+    }
 }
 
 .div-container {
