@@ -3,25 +3,40 @@
     padding: 30px 20px;
     background-color: #F5F5F550;
     height: auto;
-        
-    @media screen and (max-width: 991px){
+
+    @media screen and (max-width: 991px) {
         margin: 0;
+        padding: 0;
     }
-}
 
-.div-container {
-    padding: 0 90px;
-}
+    div.div-container {
+        padding: 0 90px;
 
-img {
-    width: 3rem;
-}
+        @media screen and (max-width: 991px) {
+            margin: 0;
+            padding: 30px 20px;
+        }
+    }
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
+    img {
+        width: 3rem;
+    }
 
-.input-search {
-    width: 400px;
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .input-search {
+        width: 400px;
+
+        @media screen and (max-width: 670px) {
+            width: 30%;
+        }
+
+        .group-text {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
 }
