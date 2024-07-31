@@ -3,21 +3,40 @@
     padding: 30px 20px;
     background-color: #F5F5F550;
     height: auto;
-}
 
-.div-container {
-    padding: 0 90px;
-}
+    @media screen and (max-width: 991px) {
+        margin: 0;
+        padding: 0;
+    }
 
-img {
-    width: 3rem;
-}
+    div.div-container {
+        padding: 0 90px;
 
-.logo {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
+        @media screen and (max-width: 991px) {
+            margin: 0;
+            padding: 30px 20px;
+        }
+    }
 
-.input-search {
-    width: 400px;
+    img {
+        width: 3rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+        font-weight: 500;
+    }
+
+    .input-search {
+        width: 400px;
+
+        @media screen and (max-width: 670px) {
+            width: 30%;
+        }
+
+        .group-text {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
 }

@@ -1,8 +1,57 @@
 .content {
     margin-left: 190px;
     padding: 30px 20px;
+
+    @media screen and (max-width: 991px) {
+        margin-left: 0;
+    }
 }
 
 .div-container {
     padding: 0 90px;
+
+    .order-form {
+        display: flex;
+        flex-direction: column;
+        max-width: 500px;
+        margin: auto;
+
+        label {
+            margin-bottom: 10px;
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+                padding: 8px;
+                margin-top: 5px;
+            }
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    }
+
+    .order-list {
+        max-width: 500px;
+        margin: auto;
+        margin-top: 20px;
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                border: 1px solid #ddd;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+        }
+    }
 }

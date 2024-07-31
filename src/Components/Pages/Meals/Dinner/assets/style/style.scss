@@ -1,6 +1,10 @@
 .content {
     margin-left: 190px;
     padding: 30px 20px;
+    
+    @media screen and (max-width: 991px){
+        margin-left: 0;
+    }
 }
 
 .div-container {
