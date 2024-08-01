@@ -4,10 +4,17 @@
     height: auto;
     background-color: #fff;
 
+    @media screen and (max-width: 991px) {
+        margin-left: 0;
+    }
 
     .div-container {
         padding: 0 90px;
         color: #FF8E6D;
+
+        @media screen and (max-width: 991px) {
+            padding: 0;
+        }
 
         .container-card {
             margin: 3rem 0;
