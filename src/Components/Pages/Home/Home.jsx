@@ -102,6 +102,17 @@ class Home extends React.Component {
             </div>
           </div>
 
+          <div className="container-pop">
+            <h5>Populares</h5>
+            <div className="d-flex flex-lg-row flex-column pops">
+              <div className="card"></div>
+              <div className="card"></div>
+              <div className="card"></div>
+              <div className="card"></div>
+              <div className="card"></div>
+            </div>
+          </div>
+
           <div className="container-feedbacks">
             <h5>Feedbacks</h5>
             <div className="feedbacks d-flex flex-lg-row flex-column">

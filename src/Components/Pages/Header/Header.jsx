@@ -23,8 +23,10 @@ const Header = () => {
     return (
         <>
             <div className='header border'>
-                <Navbar expand="none" className='d-lg-none d-flex nav-bar'>
-                    <NavbarToggler className='text-dark border' onClick={toggle} />
+                <Navbar expand="none" className='d-lg-none d-flex nav-bar p-0'>
+                    <button onClick={toggle} class="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mr-auto mt-2 nav" navbar>
                             <NavItem className="nav-item">

@@ -1,6 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './assets/style/style.scss';
 
+const options = {
+    cafe: [
+        { name: 'Café Expresso', img: 'link_para_imagem' },
+        { name: 'Café com Leite', img: 'link_para_imagem' }
+    ],
+    refrescos: [
+        { name: 'Suco de Laranja', img: 'link_para_imagem' },
+        { name: 'Refrigerante', img: 'link_para_imagem' }
+    ],
+    doces: [
+        { name: 'Bolo de Chocolate', img: 'link_para_imagem' },
+        { name: 'Brigadeiro', img: 'link_para_imagem' }
+    ],
+    salgados: [
+        { name: 'Coxinha', img: 'link_para_imagem' },
+        { name: 'Empada', img: 'link_para_imagem' }
+    ],
+    almoco: [
+        { name: 'Arroz e Feijão', img: 'link_para_imagem' },
+        { name: 'Lasanha', img: 'link_para_imagem' }
+    ],
+    jantar: [
+        { name: 'Pizza', img: 'link_para_imagem' },
+        { name: 'Hambúrguer', img: 'link_para_imagem' }
+    ],
+    cafe_da_manha: [
+        { name: 'Pão com Manteiga', img: 'link_para_imagem' },
+        { name: 'Torrada', img: 'link_para_imagem' }
+    ]
+};
+
 const Order = () => {
     const [dishName, setDishName] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -8,6 +39,8 @@ const Order = () => {
     const [specialRequests, setSpecialRequests] = useState('');
     const [orders, setOrders] = useState([]);
     const [editOrder, setEditOrder] = useState(null);
+    const [topic, setTopic] = useState('');
+    const [filteredOptions, setFilteredOptions] = useState([]);
 
     useEffect(() => {
         const savedOrders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -17,6 +50,10 @@ const Order = () => {
     useEffect(() => {
         localStorage.setItem('orders', JSON.stringify(orders));
     }, [orders]);
+
+    useEffect(() => {
+        setFilteredOptions(options[topic] || []);
+    }, [topic]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,6 +79,7 @@ const Order = () => {
         setQuantity('');
         setPaymentMethod('');
         setSpecialRequests('');
+        setTopic('');
     };
 
     const handleEdit = (order) => {
@@ -62,13 +100,36 @@ const Order = () => {
                 <h1>{editOrder ? 'Editar Pedido' : 'Cadastro de Pedidos'}</h1>
                 <form className="order-form" onSubmit={handleSubmit}>
                     <label>
+                        Tópico:
+                        <select
+                            value={topic}
+                            onChange={(e) => setTopic(e.target.value)}
+                            required
+                        >
+                            <option value="">Selecione um tópico</option>
+                            <option value="cafe">Café</option>
+                            <option value="refrescos">Refrescos</option>
+                            <option value="doces">Doces</option>
+                            <option value="salgados">Salgados</option>
+                            <option value="almoco">Almoço</option>
+                            <option value="jantar">Jantar</option>
+                            <option value="cafe_da_manha">Café da Manhã</option>
+                        </select>
+                    </label>
+                    <label>
                         Nome do Prato:
-                        <input
-                            type="text"
+                        <select
                             value={dishName}
                             onChange={(e) => setDishName(e.target.value)}
                             required
-                        />
+                        >
+                            <option value="">Selecione um prato</option>
+                            {filteredOptions.map((option, index) => (
+                                <option key={index} value={option.name}>
+                                    {option.name}
+                                </option>
+                            ))}
+                        </select>
                     </label>
                     <label>
                         Quantidade:

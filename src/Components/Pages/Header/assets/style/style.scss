@@ -6,20 +6,24 @@
 
     @media screen and (max-width: 991px) {
         margin: 0;
-        padding: 0;
+        padding: 20px;
     }
 
-        .nav-bar {
-            margin-top: 20px;
-            display: flex;
-            gap: 5px;
-            width: 100%;
-    
-            .nav{
-                border: 1px solid #f0efef;
+    .nav-bar {
+        .navbar-toggler {
+            border: 1px solid #FF8E6D;
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 142, 109, 1)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
             }
+        }
+
+        .nav {
+            border: 1px solid #f0efef;
+
             .nav-item {
                 width: 100%;
+
                 .nav-link {
                     padding: 10px;
                     width: 100%;
@@ -28,8 +32,8 @@
                     font-weight: 400;
                     font-size: 1.2rem;
                 }
-    
-                .nav-link.selected{
+
+                .nav-link.selected {
                     background-color: #FF8E6D;
                     font-weight: bold;
                     color: #FFF;
@@ -37,32 +41,36 @@
             }
         }
 
-        .div-container{
-            @media screen and (max-width: 991px) {
-                margin: 0;
-                padding: 0 20px 10px;
+    }
+
+    .div-container {
+        @media screen and (max-width: 991px) {
+            margin: 0;
+            padding: 0 10px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 500;
+
+            img {
+                width: 3rem;
             }
         }
 
-    img {
-        width: 3rem;
-    }
+        .input-search {
+            width: 400px;
 
-    .logo {
-        font-size: 1.5rem;
-        font-weight: 500;
-    }
+            @media screen and (max-width: 670px) {
+                width: 30%;
+            }
 
-    .input-search {
-        width: 400px;
-
-        @media screen and (max-width: 670px) {
-            width: 30%;
-        }
-
-        .group-text {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
+            .group-text {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
         }
     }
+
+
 }
