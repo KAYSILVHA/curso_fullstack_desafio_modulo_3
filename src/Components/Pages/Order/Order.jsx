@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./assets/style/style.scss"
+import './assets/style/style.scss';
 
 const Order = () => {
     const [dishName, setDishName] = useState('');
@@ -7,6 +7,7 @@ const Order = () => {
     const [paymentMethod, setPaymentMethod] = useState('');
     const [specialRequests, setSpecialRequests] = useState('');
     const [orders, setOrders] = useState([]);
+    const [editOrder, setEditOrder] = useState(null);
 
     useEffect(() => {
         const savedOrders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -28,7 +29,14 @@ const Order = () => {
             id: Date.now()
         };
 
-        setOrders([...orders, newOrder]);
+        if (editOrder) {
+            setOrders(orders.map(order =>
+                order.id === editOrder.id ? newOrder : order
+            ));
+            setEditOrder(null);
+        } else {
+            setOrders([...orders, newOrder]);
+        }
 
         setDishName('');
         setQuantity('');
@@ -36,10 +44,22 @@ const Order = () => {
         setSpecialRequests('');
     };
 
+    const handleEdit = (order) => {
+        setDishName(order.dishName);
+        setQuantity(order.quantity);
+        setPaymentMethod(order.paymentMethod);
+        setSpecialRequests(order.specialRequests);
+        setEditOrder(order);
+    };
+
+    const handleDelete = (id) => {
+        setOrders(orders.filter(order => order.id !== id));
+    };
+
     return (
         <div className="content">
             <div className="container-fluid div-container">
-                <h1>Cadastro de Pedidos</h1>
+                <h1>{editOrder ? 'Editar Pedido' : 'Cadastro de Pedidos'}</h1>
                 <form className="order-form" onSubmit={handleSubmit}>
                     <label>
                         Nome do Prato:
@@ -78,20 +98,25 @@ const Order = () => {
                             onChange={(e) => setSpecialRequests(e.target.value)}
                         />
                     </label>
-                    <button type="submit">Adicionar Pedido</button>
+                    <button type="submit">{editOrder ? 'Atualizar Pedido' : 'Adicionar Pedido'}</button>
+                    {editOrder && (
+                        <button type="button" onClick={() => setEditOrder(null)} className="cancel-button">Cancelar</button>
+                    )}
                 </form>
                 <div className="order-list">
                     <h2>Lista de Pedidos</h2>
-                    <ul>
+                    <div className="order-cards">
                         {orders.map((order) => (
-                            <li key={order.id}>
+                            <div className="order-card" key={order.id}>
                                 <h3>{order.dishName}</h3>
-                                <p>Quantidade: {order.quantity}</p>
-                                <p>Forma de Pagamento: {order.paymentMethod}</p>
-                                <p>Pedidos Especiais: {order.specialRequests}</p>
-                            </li>
+                                <p><strong>Quantidade:</strong> {order.quantity}</p>
+                                <p><strong>Forma de Pagamento:</strong> {order.paymentMethod}</p>
+                                <p><strong>Pedidos Especiais:</strong> {order.specialRequests}</p>
+                                <button onClick={() => handleEdit(order)} className="edit-button">Editar</button>
+                                <button onClick={() => handleDelete(order.id)} className="delete-button">Excluir</button>
+                            </div>
                         ))}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </div>
