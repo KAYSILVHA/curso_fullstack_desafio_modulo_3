@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button, ListGroup, ListGroupItem, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, InputGroup, InputGroupText, Input } from 'reactstrap';
+import { Container, Button, ListGroup, ListGroupItem, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, InputGroup, InputGroupText, Input, Card, CardBody } from 'reactstrap';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import "./assets/style/style.scss";
@@ -10,7 +10,7 @@ const Order = () => {
     const [editModal, setEditModal] = useState(false);
     const [currentOrder, setCurrentOrder] = useState(null);
     const [buyerInfo, setBuyerInfo] = useState({ name: '', address: '', phone: '', postalCode: '', paymentType: '' });
-    const [addressDetails, setAddressDetails] = useState({ street: '', number: '', neighborhood: '' });
+    const [addressDetails, setAddressDetails] = useState({ street: '', number: '', neighborhood: '', city: '', state: '' });
 
     useEffect(() => {
         const savedOrders = JSON.parse(localStorage.getItem('orders')) || [];
@@ -95,7 +95,9 @@ const Order = () => {
                 setAddressDetails({
                     ...addressDetails,
                     street: logradouro,
-                    neighborhood: bairro
+                    neighborhood: bairro,
+                    city: localidade,
+                    state: uf
                 });
                 setBuyerInfo({
                     ...buyerInfo,
@@ -146,89 +148,157 @@ const Order = () => {
                         <ModalHeader toggle={toggleModal}>Informações do Comprador</ModalHeader>
                         <ModalBody>
                             <Form>
-                                <FormGroup>
-                                    <Label for="name">Nome</Label>
-                                    <Input type="text" id="name" value={buyerInfo.name} onChange={(e) => setBuyerInfo({ ...buyerInfo, name: e.target.value })} />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="address">Endereço</Label>
-                                    <Input
-                                        type="text"
-                                        id="address"
-                                        value={buyerInfo.address}
-                                        onChange={(e) => setBuyerInfo({ ...buyerInfo, address: e.target.value })}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="phone">Telefone</Label>
-                                    <Input type="text" id="phone" value={buyerInfo.phone} onChange={(e) => setBuyerInfo({ ...buyerInfo, phone: e.target.value })} />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="postalCode">CEP</Label>
-                                    <InputGroup>
-                                        <Input
-                                            type="text"
-                                            id="postalCode"
-                                            maxLength="8"
-                                            value={buyerInfo.postalCode}
-                                            onChange={(e) => setBuyerInfo({ ...buyerInfo, postalCode: e.target.value })}
-                                            onBlur={handlePostalCodeBlur}
-                                        />
-                                        <InputGroupText style={{cursor: "pointer"}}>Buscar</InputGroupText>
-                                    </InputGroup>
-                                </FormGroup>
-                                <FormGroup className='d-flex flex-column'>
-                                    <Label for="paymentType">Tipo de Pagamento</Label>
-                                    <Input
-                                        className='form-control'
-                                        type="select"
-                                        id="paymentType"
-                                        value={buyerInfo.paymentType}
-                                        onChange={(e) => setBuyerInfo({ ...buyerInfo, paymentType: e.target.value })}
-                                    >
-                                        <option value="">Selecione</option>
-                                        <option value="credit_card">Cartão de Crédito</option>
-                                        <option value="debit_card">Cartão de Débito</option>
-                                        <option value="boleto">Boleto</option>
-                                        <option value="pix">Pix</option>
-                                    </Input>
-                                </FormGroup>
+                                <Card className="border">
+                                    <h6 className='pt-3 pl-3'>Informações pessoais</h6>
+                                    <CardBody>
+                                        <FormGroup>
+                                            <Label for="name">Nome</Label>
+                                            <Input type="text" id="name" value={buyerInfo.name} onChange={(e) => setBuyerInfo({ ...buyerInfo, name: e.target.value })} />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="phone">Telefone</Label>
+                                            <Input type="text" id="phone" value={buyerInfo.phone} onChange={(e) => setBuyerInfo({ ...buyerInfo, phone: e.target.value })} />
+                                        </FormGroup>
+                                    </CardBody>
+                                </Card>
+                                <Card className='mt-2'>
+                                    <h6 className='pt-3 pl-3'>Endereço</h6>
+                                    <CardBody>
+                                        <FormGroup>
+                                            <Label for="postalCode">CEP</Label>
+                                            <InputGroup>
+                                                <Input
+                                                    type="text"
+                                                    id="postalCode"
+                                                    maxLength="8"
+                                                    value={buyerInfo.postalCode}
+                                                    onChange={(e) => setBuyerInfo({ ...buyerInfo, postalCode: e.target.value })}
+                                                    onBlur={handlePostalCodeBlur}
+                                                />
+                                                <InputGroupText style={{ cursor: "pointer" }}>Buscar</InputGroupText>
+                                            </InputGroup>
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="street">Rua</Label>
+                                            <Input
+                                                type="text"
+                                                id="street"
+                                                value={addressDetails.street}
+                                                onChange={(e) => setAddressDetails({ ...addressDetails, street: e.target.value })}
+                                            />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="number">Número</Label>
+                                            <Input
+                                                type="text"
+                                                id="number"
+                                                value={addressDetails.number}
+                                                onChange={(e) => setAddressDetails({ ...addressDetails, number: e.target.value })}
+                                            />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="neighborhood">Bairro</Label>
+                                            <Input
+                                                type="text"
+                                                id="neighborhood"
+                                                value={addressDetails.neighborhood}
+                                                onChange={(e) => setAddressDetails({ ...addressDetails, neighborhood: e.target.value })}
+                                            />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="city">Cidade</Label>
+                                            <Input
+                                                type="text"
+                                                id="city"
+                                                value={addressDetails.city}
+                                                onChange={(e) => setAddressDetails({ ...addressDetails, city: e.target.value })}
+                                            />
+                                        </FormGroup>
+                                        <FormGroup>
+                                            <Label for="state">Estado</Label>
+                                            <Input
+                                                type="text"
+                                                id="state"
+                                                value={addressDetails.state}
+                                                onChange={(e) => setAddressDetails({ ...addressDetails, state: e.target.value })}
+                                            />
+                                        </FormGroup>
+                                    </CardBody>
+                                </Card>
+                                <Card className='mt-2'>
+                                <h6 className='pt-3 pl-3'>Pagamento</h6>
+                                    <CardBody>
+                                        <FormGroup className='d-flex flex-column'>
+                                            <Label for="paymentType">Tipo de Pagamento</Label>
+                                            <Input
+                                                className='form-control'
+                                                type="select"
+                                                id="paymentType"
+                                                value={buyerInfo.paymentType}
+                                                onChange={(e) => setBuyerInfo({ ...buyerInfo, paymentType: e.target.value })}
+                                            >
+                                                <option value="">Selecione</option>
+                                                <option value="credit_card">Cartão de Crédito</option>
+                                                <option value="debit_card">Cartão de Débito</option>
+                                                <option value="boleto">Boleto</option>
+                                                <option value="pix">Pix</option>
+                                            </Input>
+                                        </FormGroup>
+                                    </CardBody>
+                                </Card>
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={handlePurchase}>Finalizar Compra</Button>
-                            <Button color="secondary" onClick={toggleModal}>Cancelar</Button>
+                            <Button color="secondary" onClick={toggleModal}>Fechar</Button>
+                            <Button color="primary" onClick={handlePurchase}>Confirmar Compra</Button>
                         </ModalFooter>
                     </Modal>
 
                     <Modal isOpen={editModal} toggle={toggleEditModal}>
-                        <ModalHeader toggle={toggleEditModal} >Editar Pedido</ModalHeader>
+                        <ModalHeader toggle={toggleEditModal}>Editar Pedido</ModalHeader>
                         <ModalBody>
                             <Form>
                                 <FormGroup>
-                                    <Label for="name">Nome</Label>
+                                    <Label for="editName">Nome</Label>
                                     <Input
                                         type="text"
-                                        id="name"
+                                        id="editName"
                                         value={currentOrder?.name || ''}
                                         onChange={(e) => setCurrentOrder({ ...currentOrder, name: e.target.value })}
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="quantity">Quantidade</Label>
+                                    <Label for="editDescription">Descrição</Label>
+                                    <Input
+                                        type="text"
+                                        id="editDescription"
+                                        value={currentOrder?.description || ''}
+                                        onChange={(e) => setCurrentOrder({ ...currentOrder, description: e.target.value })}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="editPrice">Preço</Label>
                                     <Input
                                         type="number"
-                                        id="quantity"
-                                        value={currentOrder?.quantity || 1}
-                                        min="1"
-                                        onChange={(e) => setCurrentOrder({ ...currentOrder, quantity: parseInt(e.target.value, 10) })}
+                                        id="editPrice"
+                                        value={currentOrder?.price || ''}
+                                        onChange={(e) => setCurrentOrder({ ...currentOrder, price: e.target.value })}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="editQuantity">Quantidade</Label>
+                                    <Input
+                                        type="number"
+                                        id="editQuantity"
+                                        value={currentOrder?.quantity || ''}
+                                        onChange={(e) => setCurrentOrder({ ...currentOrder, quantity: e.target.value })}
                                     />
                                 </FormGroup>
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={handleSaveEdit}>Salvar</Button>
                             <Button color="secondary" onClick={toggleEditModal}>Cancelar</Button>
+                            <Button color="primary" onClick={handleSaveEdit}>Salvar</Button>
                         </ModalFooter>
                     </Modal>
                 </div>
