@@ -5,11 +5,16 @@ import { useNavigate } from 'react-router-dom';
 
 import BoloChocolate from "./assets/images/bolo-de-chocolate.jpg";
 import Brigadeiro from "./assets/images/brigadeiro.jpg";
+import Beijinho from "./assets/images/Beijinho.jpg";
+import Pipoca from "./assets/images/Pipoca.jpg";
+import Ddonuts from "./assets/images/d-donuts.jpg";
 
 const sweets = [
     { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.' },
     { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
-    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
+    { name: 'Beijinho', img: Beijinho, description: 'Beijinho .' },
+    { name: 'Pipoca', img: Pipoca, description: 'Pipoca de Cinema .' },
+    { name: 'Ddonuts', img: Ddonuts, description: 'Ddonuts Gourmet .' },
 ];
 
 const Candys = () => {
