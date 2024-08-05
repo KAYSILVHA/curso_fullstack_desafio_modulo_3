@@ -80,17 +80,6 @@ class Home extends React.Component {
             <h3>Olá</h3>
             <h4>Bem vindo(a)!</h4>
           </div>
-          <div className='container-card'>
-            <h5>Eai! Vamos escolher o que hoje?</h5>
-            <div className="d-flex flex-lg-row flex-column cards">
-              <div className="card">Bebidas</div>
-              <div className="card">Doces</div>
-              <div className="card">Salgados</div>
-              <div className="card">Refeições</div>
-              <div className="card">Combos</div>
-            </div>
-          </div>
-
           <div className="container-bests">
             <h5>Promoções do dia</h5>
             <div className="d-flex flex-column">

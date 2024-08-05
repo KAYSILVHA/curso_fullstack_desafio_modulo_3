@@ -4,8 +4,8 @@ import "./assets/style/style.scss";
 import { useNavigate } from 'react-router-dom';
 
 const sweets = [
-    { name: 'Bolo de Chocolate', img: 'link_para_imagem', description: 'Delicioso bolo de chocolate.' },
-    { name: 'Brigadeiro', img: 'link_para_imagem', description: 'Brigadeiro gourmet.' },
+    { name: 'Bolo de Chocolate', img: './assets/images/bolo-de-chocolate.jpg', description: 'Delicioso bolo de chocolate.' },
+    { name: 'Brigadeiro', img: './assets/images/brigadeiro.jpg', description: 'Brigadeiro gourmet.' },
     // Adicione mais opções aqui...
 ];
 
