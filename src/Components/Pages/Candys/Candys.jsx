@@ -9,6 +9,7 @@ import Brigadeiro from "./assets/images/brigadeiro.jpg";
 const sweets = [
     { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.' },
     { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
+    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
 ];
 
 const Candys = () => {
