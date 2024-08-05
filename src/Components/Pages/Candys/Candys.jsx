@@ -9,10 +9,9 @@ import Brigadeiro from "./assets/images/brigadeiro.jpg";
 const initialSweets = [
     { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.', price: 20, added: false },
     { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.', price: 10, added: false },
-    { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.' },
-    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
-    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
-
+    { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.', price: 20 },
+    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.', price: 10 },
+    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.', price: 10 },
 ];
 
 const Candys = () => {
@@ -63,7 +62,7 @@ const Candys = () => {
                                     <CardBody>
                                         <CardTitle tag="h5">{sweet.name}</CardTitle>
                                         <CardText>{sweet.description}</CardText>
-                                        <CardText>Preço: R$ {sweet.price.toFixed(2)}</CardText>
+                                        <CardText>Preço: R$ {isNaN(sweet.price) ? 'Preço não disponível' : sweet.price.toFixed(2)}</CardText>
                                         <Input
                                             type="number"
                                             min="1"
