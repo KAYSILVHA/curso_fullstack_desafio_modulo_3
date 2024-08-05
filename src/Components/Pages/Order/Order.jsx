@@ -45,7 +45,7 @@ const Order = () => {
     };
 
     const getTotal = () => {
-        return orders.reduce((total, order) => total + order.price * order.quantity, 0);
+        return orders.reduce((total, order) => total + (order.price || 0) * (order.quantity || 1), 0);
     };
 
     return (
@@ -61,9 +61,9 @@ const Order = () => {
                                     <div>
                                         <h5>{order.name}</h5>
                                         <p>{order.description}</p>
-                                        <p>Quantidade: {order.quantity}</p>
-                                        <p>Preço: R$ {order.price.toFixed(2)}</p>
-                                        <p>Total: R$ {(order.price * order.quantity).toFixed(2)}</p>
+                                        <p>Quantidade: {order.quantity || 1}</p>
+                                        <p>Preço: R$ {(order.price || 0).toFixed(2)}</p>
+                                        <p>Total: R$ {((order.price || 0) * (order.quantity || 1)).toFixed(2)}</p>
                                         <Button color="warning" onClick={() => handleEdit(order)}>Editar</Button>
                                         <Button color="danger" onClick={() => handleDelete(order.id)}>Excluir</Button>
                                     </div>
