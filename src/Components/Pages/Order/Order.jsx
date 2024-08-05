@@ -44,6 +44,10 @@ const Order = () => {
         toggleEditModal();
     };
 
+    const getTotal = () => {
+        return orders.reduce((total, order) => total + order.price * order.quantity, 0);
+    };
+
     return (
         <Container>
             <div className='content'>
@@ -57,6 +61,9 @@ const Order = () => {
                                     <div>
                                         <h5>{order.name}</h5>
                                         <p>{order.description}</p>
+                                        <p>Quantidade: {order.quantity}</p>
+                                        <p>Preço: R$ {order.price.toFixed(2)}</p>
+                                        <p>Total: R$ {(order.price * order.quantity).toFixed(2)}</p>
                                         <Button color="warning" onClick={() => handleEdit(order)}>Editar</Button>
                                         <Button color="danger" onClick={() => handleDelete(order.id)}>Excluir</Button>
                                     </div>
@@ -66,6 +73,7 @@ const Order = () => {
                     </ListGroup>
                     {orders.length > 0 && (
                         <div className="text-center mt-5">
+                            <h3>Total do Pedido: R$ {getTotal().toFixed(2)}</h3>
                             <Button color="success" onClick={toggleModal}>Comprar</Button>
                         </div>
                     )}
@@ -107,21 +115,13 @@ const Order = () => {
                                     />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="description">Descrição</Label>
+                                    <Label for="quantity">Quantidade</Label>
                                     <Input
-                                        type="text"
-                                        id="description"
-                                        value={currentOrder?.description || ''}
-                                        onChange={(e) => setCurrentOrder({ ...currentOrder, description: e.target.value })}
-                                    />
-                                </FormGroup>
-                                <FormGroup>
-                                    <Label for="img">Imagem URL</Label>
-                                    <Input
-                                        type="text"
-                                        id="img"
-                                        value={currentOrder?.img || ''}
-                                        onChange={(e) => setCurrentOrder({ ...currentOrder, img: e.target.value })}
+                                        type="number"
+                                        id="quantity"
+                                        value={currentOrder?.quantity || 1}
+                                        min="1"
+                                        onChange={(e) => setCurrentOrder({ ...currentOrder, quantity: parseInt(e.target.value, 10) })}
                                     />
                                 </FormGroup>
                             </Form>
