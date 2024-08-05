@@ -13,7 +13,6 @@ const Order = () => {
     }, []);
 
     const handlePurchase = () => {
-        // Aqui você pode adicionar a lógica para processar a compra
         localStorage.removeItem('orders');
         setOrders([]);
         setModal(false);
