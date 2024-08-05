@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardBody, CardTitle, CardText, Button, Container, Row, Col } from 'reactstrap';
 import "./assets/style/style.scss";
+import { useNavigate } from 'react-router-dom';
 
 const sweets = [
     { name: 'Bolo de Chocolate', img: 'link_para_imagem', description: 'Delicioso bolo de chocolate.' },
@@ -9,6 +10,7 @@ const sweets = [
 ];
 
 const Candys = () => {
+    const navigate = useNavigate();
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -22,25 +24,34 @@ const Candys = () => {
         localStorage.setItem('orders', JSON.stringify(newOrder));
     };
 
+    const goToOrderPage = () => {
+        navigate('/order');
+    };
+
     return (
         <Container>
-            <h1 className="text-center my-5">Venda de Doces</h1>
-            <Row>
-                {sweets.map((sweet, index) => (
-                    <Col md="4" className="mb-4" key={index}>
-                        <Card>
-                            <img src={sweet.img} alt={sweet.name} className="card-img-top" />
-                            <CardBody>
-                                <CardTitle tag="h5">{sweet.name}</CardTitle>
-                                <CardText>{sweet.description}</CardText>
-                                <Button color="primary" onClick={() => handleAddToOrder(sweet)}>Adicionar aos Pedidos</Button>
-                            </CardBody>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
-            <div className="text-center">
-                <Button color="success" href="/order">Ver Pedidos</Button>
+            <div className='content'>
+                <div className="container-fluid div-container">
+
+                    <h1 className="text-center my-5">Venda de Doces</h1>
+                    <Row>
+                        {sweets.map((sweet, index) => (
+                            <Col md="4" className="mb-4" key={index}>
+                                <Card>
+                                    <img src={sweet.img} alt={sweet.name} className="card-img-top" />
+                                    <CardBody>
+                                        <CardTitle tag="h5">{sweet.name}</CardTitle>
+                                        <CardText>{sweet.description}</CardText>
+                                        <Button color="primary" onClick={() => handleAddToOrder(sweet)}>Adicionar aos Pedidos</Button>
+                                    </CardBody>
+                                </Card>
+                            </Col>
+                        ))}
+                    </Row>
+                    <div className="text-center">
+                        <Button color="success" onClick={goToOrderPage}>Ver Pedidos</Button>
+                    </div>
+                </div>
             </div>
         </Container>
     );
