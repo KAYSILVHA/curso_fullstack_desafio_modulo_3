@@ -52,10 +52,15 @@ const Order = () => {
                     <ListGroup>
                         {orders.map((order, index) => (
                             <ListGroupItem key={index}>
-                                <h5>{order.name}</h5>
-                                <p>{order.description}</p>
-                                <Button color="warning" onClick={() => handleEdit(order)}>Editar</Button>
-                                <Button color="danger" onClick={() => handleDelete(order.id)}>Excluir</Button>
+                                <div className="d-flex align-items-center">
+                                    <img src={order.img} alt={order.name} style={{ width: '100px', height: 'auto', marginRight: '15px' }} />
+                                    <div>
+                                        <h5>{order.name}</h5>
+                                        <p>{order.description}</p>
+                                        <Button color="warning" onClick={() => handleEdit(order)}>Editar</Button>
+                                        <Button color="danger" onClick={() => handleDelete(order.id)}>Excluir</Button>
+                                    </div>
+                                </div>
                             </ListGroupItem>
                         ))}
                     </ListGroup>
@@ -108,6 +113,15 @@ const Order = () => {
                                         id="description"
                                         value={currentOrder?.description || ''}
                                         onChange={(e) => setCurrentOrder({ ...currentOrder, description: e.target.value })}
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="img">Imagem URL</Label>
+                                    <Input
+                                        type="text"
+                                        id="img"
+                                        value={currentOrder?.img || ''}
+                                        onChange={(e) => setCurrentOrder({ ...currentOrder, img: e.target.value })}
                                     />
                                 </FormGroup>
                             </Form>

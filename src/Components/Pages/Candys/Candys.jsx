@@ -34,7 +34,6 @@ const Candys = () => {
         <Container>
             <div className='content'>
                 <div className="container-fluid div-container">
-
                     <h1 className="text-center my-5">Venda de Doces</h1>
                     <Row>
                         {sweets.map((sweet, index) => (
