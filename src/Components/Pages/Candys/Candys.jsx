@@ -3,10 +3,12 @@ import { Card, CardBody, CardTitle, CardText, Button, Container, Row, Col } from
 import "./assets/style/style.scss";
 import { useNavigate } from 'react-router-dom';
 
+import BoloChocolate from "./assets/images/bolo-de-chocolate.jpg";
+import Brigadeiro from "./assets/images/brigadeiro.jpg";
+
 const sweets = [
-    { name: 'Bolo de Chocolate', img: './assets/images/bolo-de-chocolate.jpg', description: 'Delicioso bolo de chocolate.' },
-    { name: 'Brigadeiro', img: './assets/images/brigadeiro.jpg', description: 'Brigadeiro gourmet.' },
-    // Adicione mais opções aqui...
+    { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.' },
+    { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
 ];
 
 const Candys = () => {
