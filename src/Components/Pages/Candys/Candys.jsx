@@ -9,7 +9,7 @@ import Beijinho from "./assets/images/Beijinho.jpg";
 import Pipoca from "./assets/images/Pipoca.jpg";
 import Ddonuts from "./assets/images/d-donuts.jpg";
 
-const sweets = [
+const initialSweets = [
     { name: 'Bolo de Chocolate', img: BoloChocolate, description: 'Delicioso bolo de chocolate.' },
     { name: 'Brigadeiro', img: Brigadeiro, description: 'Brigadeiro gourmet.' },
     { name: 'Beijinho', img: Beijinho, description: 'Beijinho .' },
@@ -55,30 +55,33 @@ const Candys = () => {
     return (
         <Container>
             <div className='content'>
-                <div className="container-fluid div-container">
-                    <h1 className="text-center my-5">Venda de Doces</h1>
+                <div className="div-container">
+                    <h1 className="text-center">Venda de Doces</h1>
                     <Row>
                         {sweets.map((sweet, index) => (
-                            <Col md="4" className="mb-4 d-flex align-items-stretch" key={index}>
+                            <Col md="4" className="mb-4 d-flex align-items-stretch col-12 justify-content-center" key={index}>
                                 <Card className='card'>
                                     <img src={sweet.img} alt={sweet.name} className="card-img-top" />
                                     <CardBody>
                                         <CardTitle tag="h5">{sweet.name}</CardTitle>
                                         <CardText>{sweet.description}</CardText>
                                         <CardText>Preço: R$ {isNaN(sweet.price) ? 'Preço não disponível' : sweet.price.toFixed(2)}</CardText>
-                                        <Input
-                                            type="number"
-                                            min="1"
-                                            defaultValue="1"
-                                            onChange={(e) => handleQuantityChange(e, sweet.name)}
-                                        />
-                                        <Button 
-                                            color={sweet.added ? 'secondary' : 'primary'} 
-                                            onClick={() => handleAddToOrder(index)}
-                                            disabled={sweet.added}
-                                        >
-                                            {sweet.added ? 'Adicionado' : 'Adicionar Pedido'}
-                                        </Button>
+                                        <div className='d-flex'>
+                                            <Input
+                                                type="number"
+                                                min="1"
+                                                defaultValue="1"
+                                                onChange={(e) => handleQuantityChange(e, sweet.name)}
+                                                className='mr-2'
+                                            />
+                                            <Button
+                                                color={sweet.added ? 'secondary' : 'primary'}
+                                                onClick={() => handleAddToOrder(index)}
+                                                disabled={sweet.added}
+                                            >
+                                                {sweet.added ? 'Adicionado' : 'Adicionar'}
+                                            </Button>
+                                        </div>
                                     </CardBody>
                                 </Card>
                             </Col>
